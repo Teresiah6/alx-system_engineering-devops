@@ -4,3 +4,5 @@ This section focuses on Shell, I/O Redirections
 1_confused_smiley- writes a script that displays a confused smiley "(Ôo)'
 2_hellofile - Displays content of the /etc/passwd file
 3_twofiles -displays the content of /etc/passwd and etc/hosts
+4-lastlines -displays the last 10 lines of /etc/passwd
+5-firstlines - displays the first 10 lines of /etc/passwd
