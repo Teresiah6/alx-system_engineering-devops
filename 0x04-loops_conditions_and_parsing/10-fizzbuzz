@@ -3,7 +3,7 @@
 # display fizzbuzz for multiples of 3 and 5
 #display fizz for multiples of 3
 #display buzz for multiples of 5
-otherwise number in list format
+#otherwise number in list format
 for num in {1..100}
 do
   if (( num % 3 == 0 && num % 5 == 0 ))
