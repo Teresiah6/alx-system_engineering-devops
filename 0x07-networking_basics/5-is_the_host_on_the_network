@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#Bash script that pings an IP address as an argument
+ping_count() {
+    ping -c 5 "$@" | grep -c bytes
+}
+
+for ip in "$@"; do
+    if [[ $(ping_count "$ip") -gt 5 ]];
+    then echo "L'address $ip ping"
+    else echo "Usage: 5-is_the_host_on_the_network {$ip}"
+    fi
+done
