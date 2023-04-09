@@ -1,78 +1,45 @@
-0x05. Processes and signals
+0x0A. Configuration management
 
-0. What is my PID
-mandatory
-Write a Bash script that displays its own PID.
-
-1. List your processes
-mandatory
-Write a Bash script that displays a list of currently running processes.
-
-Requirements:
-
-Must show all processes, for all users, including those which might not have a TTY
-Display in a user-oriented format
-Show process hierarchy
-
-2. Show your Bash PID
-mandatory
-Using your previous exercise command, write a Bash script that displays lines containing the bash word, thus allowing you to easily get the PID of your Bash process.
-
-Requirements:
-
-You cannot use pgrep
-The third line of your script must be # shellcheck disable=SC2009 (for more info about ignoring shellcheck error here)
+Background Context
 
 
-3. Show your Bash PID made easy
-mandatory
-Write a Bash script that displays the PID, along with the process name, of processes whose name contain the word bash.
+When I was working for SlideShare, I worked on an auto-remediation tool called Skynet that monitored, scaled and fixed Cloud infrastructure. I was using a parallel job-execution system called MCollective that allowed me to execute commands to one or multiple servers at the same time. I could apply an action to a selected set of servers by applying a filter such as the server’s hostname or any other metadata we had (server type, server environment…). At some point, a bug was present in my code that sent nil to the filter method.
+
+There were 2 pieces of bad news:
+
+When MCollective receives nil as an argument for its filter method, it takes this to mean ‘all servers’
+The action I sent was to terminate the selected servers
+I started the parallel job-execution and after some time, I realized that it was taking longer than expected. Looking at logs I realized that I was shutting down SlideShare’s entire document conversion environment. Actually, 75% of all our conversion infrastructure servers had been shut down, resulting in users not able to convert their PDFs, powerpoints, and videos… Pretty bad!
+
+Thanks to Puppet, we were able to restore our infrastructure to normal operation in under 1H, pretty impressive. Imagine if we had to do everything manually: launching the servers, configuring and linking them, importing application code, starting every process, and obviously, fixing all the bugs (you should know by now that complicated infrastructure always goes sideways)…
+
+Obviously writing Puppet code for your infrastructure requires an investment of time and energy, but in the long term, it is for sure a must-have.
+
+Tasks
+0. Create a file 
+Using Puppet, create a file in /tmp.
 
 Requirements:
 
-You cannot use ps
+File path is /tmp/school
+File permission is 0744
+File owner is www-data
+File group is www-data
+File contains I love Puppet
 
-4. To infinity and beyond
-mandatory
-Write a Bash script that displays To infinity and beyond indefinitely.
-
-Requirements:
-
-In between each iteration of the loop, add a sleep 2
-
-5. Don't stop me now!
-mandatory
-We stopped our 4-to_infinity_and_beyond process using ctrl+c in the previous task, there is actually another way to do this.
-
-Write a Bash script that stops 4-to_infinity_and_beyond process.
+1. Install a package
+Using Puppet, install flask from pip3.
 
 Requirements:
 
-You must use kill
-Terminal #0
+Install flask
+Version must be 2.1.0
 
-6. Stop me if you can
-mandatory
-Write a Bash script that stops 4-to_infinity_and_beyond process.
+2. Execute a command
+Using Puppet, create a manifest that kills a process named killmenow.
 
 Requirements:
 
-You cannot use kill or killall
-
-
-7. Highlander
-mandatory
-Write a Bash script that displays:
-
-To infinity and beyond indefinitely
-With a sleep 2 in between each iteration
-I am invincible!!! when receiving a SIGTERM signal
-Make a copy of your 6-stop_me_if_you_can script, name it 67-stop_me_if_you_can, that kills the 7-highlander process instead of the 4-to_infinity_and_beyond one.
-
-
-
-8.. Beheaded process
-mandatory
-Write a Bash script that kills the process 7-highlander.
-
+Must use the exec Puppet resource
+Must use pkill
 
