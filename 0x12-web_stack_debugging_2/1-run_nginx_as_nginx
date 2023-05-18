@@ -2,7 +2,7 @@
 
 # Check for user argument
 if [ -z "$1" ]; then
-  echo "Please provide a user as an argu."
+  echo "Please provide a user as an arg."
   exit 1
 fi
 
