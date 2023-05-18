@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-
-# Check for user argument
-if [ -z "$1" ]; then
-  echo "Please provide a user as an arg."
-  exit 1
-fi
-
-# if nginx listening on all active IPs -> port 8080
-sudo -u "$1" netstat -tln | grep ":8080.*LISTEN"
+#Fixes to run nginx at port 8080
+#set user in the config first line on user 
+sed -i "s/#user www-data/user nginx/" /etc/nginx/nginx.conf
+#replace port 80 with 8080
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+#give the  owner permissions to read and write
+chmod 644 /etc/nginx/nginx.conf
+#kill apache if its running the process if it is running
+pkill apache2
+#start the nginx service with nginx user created
+sudo -u nginx service nginx start
