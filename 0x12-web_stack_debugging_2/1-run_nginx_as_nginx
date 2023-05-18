@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Check for user argument
+if [ -z "$1" ]; then
+  echo "Please provide a user as an argu."
+  exit 1
+fi
+
+# if nginx listening on all active IPs -> port 8080
+sudo -u "$1" netstat -tln | grep ":8080.*LISTEN"
