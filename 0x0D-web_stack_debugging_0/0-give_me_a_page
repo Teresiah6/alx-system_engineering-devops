@@ -1,4 +1,20 @@
 !/usr/bin/env bash
 # Run Apache on the holbertonschool/265-0 Docker container
-echo "ServerName localhost" >> /etc/apache2.conf
-service apache2 start
+cat > Dockerfile
+FROM httpd:latest
+COPY index.html /usr/local/apache2/htdocs/
+Ctrl+D 
+cat > index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Holberton</title>
+</head>
+<body>
+    <h1>Hello Holberton</h1>
+</body>
+</html>
+ctrl+D
+docker build -t holbertonschool/265-0 .
+docker run -d -p 80:80 holberton/265-0
+curl 0:8080
