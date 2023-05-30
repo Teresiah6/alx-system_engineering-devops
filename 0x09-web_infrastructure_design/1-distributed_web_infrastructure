@@ -1,0 +1,14 @@
+Distributed Web Infrastructure
+The distributed web infrastructure is useful in reducing traffic and therefore reducing the risk of the website being down due to an increase in traffic. This is done through the use of the HAProxy load balancer which distributes the load between two servers.
+ 
+Specifics about the infrastructure
+Two web servers serve to provide redundancy and handle incoming web requests. They both have Nginx web servers. The presence of several servers allows for distributed incoming web traffic and improves the reliability and performance of the website.
+The load balancer distributes incoming web requests between the two web servers. HAProxy acts as a load-balancing software. The HAProxy makes use of a distributed algorithm to determine which server should receive every request that comes through. The load balancer serves to optimize resource utilization thus preventing any single server from being overloaded. 
+The load server also allows for an active-passive setup, where only one server actively handles incoming requests while the other server remains in a standby or passive state. The active server processes the incoming traffic and in the event that it fails, the load balancer switches the traffic to the server that was passive. 
+The primary-replica(master-slave) database cluster allows for the primary note (master) to handle write operations and act as the authoritative source of the data. The replica node replicates data from the primary node and the primary handles the read operation. The replica node retains synchronicity with the primary node ensuring that data is consistent. 
+Issues with the infrastructure
+SPOF - The load balancer and the database cluster still represent a potential single point of failure. If the load balancer and the primary database node fail, the website is likely to become unavailable. 
+Security issues - The infrastructure lacks security measures such as HTTPS and firewalls. The firewall aids in protecting the server from unauthorized access as well as malicious attacks. On the other hand, HTTPS offers secure communication and encryption between the user’s browser and the web server, thus ensuring confidentiality 
+Monitoring - The infrastructure lacks monitoring tools making it difficult to track the performance, health, and availability of the infrastructure components. 
+
+
