@@ -1,0 +1,7 @@
+Infrastructure
+One server has been added to the infrastructure and is dedicated to hosting the web server components
+The load balancer is also added and configured in a cluster with an existing load balancer. This allows for load balancing, enhancement of scalability, and enhancement of availability of infrastructure.
+The components such as the web server, database, and application server are slit and deployed on separate servers. This serves to enhance scalability and isolation. This also means that independent scaling can be undertaken based on the specific requirements of each component.
+
+The advantages of adding a server and a load balancer as well as separating the web server, database, and application server include better scalability, better availability, resource utilization as well as maintenance and troubleshooting.
+
