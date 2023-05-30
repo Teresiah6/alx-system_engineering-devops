@@ -1,0 +1,15 @@
+  Specifics about this infrastructure
+There are three firewalls that are used to enhance security. The first firewall is placed between the user’s device and the web infrastructure. The second and third firewalls are placed between the load balancer and the web servers. Firewalls are used in monitoring and controlling incoming as well as outgoing network traffic based on predefined rules thus protecting against threats, unauthorized threats, and malicious activities.
+There are three monitoring tools that are the sumologic collectors which are added to collect and transmit data to sumologic. They are installed on each server  to offer real-time performance and health data 
+An SSL certificate is added to enhance traffic over HTTPS for www.foobar.com. It provides the needed encryption key and certificate information to establish a secure connection
+
+Serving traffic through HTTPS ensures that communication is encrypted between the user’s computer and the web server. It prevents authorized users from tampering with or accessing sensitive information.
+Monitoring is crucial in the tracking and analysis of various aspects of the infrastructure such as security, resource usage, availability as well as performance. The monitoring tools collect data through the deployment of monitoring clients on each server. 
+To monitor the web server’s queries per second (QPS), the monitoring tool gathers data from the web server’s logs or monitors the traffic between the web servers and the load balancers. The analysis of this data is in turn used to determine QPS.
+
+		Issues with the infrastructure
+Terminating SSL at the load balancer level can be an issue as it requires additional processing resources on the load balancer. This has the potential to impact performance and scalability. 
+Having a single MYSQL server with the capacity to accept writes represents a SPOF. This means that if the primary node fails, it can result in data unavailability as well as downtime. 
+
+Having servers with the same components can pose a problem in terms of resource utilization and scalability. This is because it limits the ability to scale each component independently based on their specific requirements. 
+
