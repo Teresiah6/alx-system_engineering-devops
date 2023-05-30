@@ -1,0 +1,27 @@
+Description
+The diagram above shows a simple one-server web infrastructure that hosts the website that is reachable via www.foobar.com. It is comprised of one server, 1 web server (Nginx), 1 application server, 1 application file (code base), 1 database (MySQL), 1 domain name foobar.com configured with www record that points to your server IP 8.8.8.8
+
+Explanation of specific infrastructure
+Server
+The server refers to a physical or virtual machine that is responsible for both sebring and hosting the website for users. In this infrastructure, there is one server that hosts all the components. 
+Role of domain name
+The domain name is the way humans use to identify a website such as www.foobar.com  as it is easy to remember and access the website for people. The role of the domain name is to provide a simple and memorable way to access a website as opposed to using the IP address of the website or server which is much harder to remember. 
+
+What type of DNS record ‘www’ is in www.foobar.com?
+The www record in www.foobar.com is a subdomain DNS record that specifies the subdomain of the website. Foobar.com on the other hand is the root domain. It is used to differentiate between various services that are offered under the same domain name
+Role of the web server
+The webserver severs the purpose of receiving and responding to HTTP requests from the user’s browser. Our web infrastructure makes use of an Nginx server which is a popular server owing to its speed and efficiency
+Role of application server
+The application server is responsible for the running of code that is used in dynamically generating the web page. 
+The application files contain the code that generates the web page dynamically. The files are stored on the server but are executed by the application server when a user requests the website.
+Role of database
+The database is used in the storage and retrieval of data for the website. A MySQL database is used in the infrastructure. 
+What is the server using to communicate with the computer of the user requesting the website?
+The server uses HTTP to communicate with the user’s computer. This allows each request and response to stand on its own and the server does not retain information about previous requests that the same user has made.
+What are the issues with this infrastructure?
+SPOF refers to a Single Point of Failure which occurs when we are using a single server to host the entire website infrastructure. This means that if the server fails, the website goes down and is inaccessible. SPOF can be addressed through the use of load balancers and several servers in a cluster.
+Downtime when maintenance needed (like deploying new code web server needs to be restarted)
+When new code is deployed, the web server needs to be restarted which causes downtime for users. 
+Cannot scale if too much incoming traffic. This is because we are using a single server which means that a limit will eventually be hit on how much traffic the server can handle. Load balancers and the use of more servers can be used to address this.
+
+
